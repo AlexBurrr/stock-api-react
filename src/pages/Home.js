@@ -1,34 +1,47 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
+import * as param from '../DATA/parameters'
+
+
+
+
+//https://www.highcharts.com/blog/download/ chart lib
 
 const Home = () => {
-
-    let stock = 'FGEN'
-    let key = 'XFQMEZGTK4PCZO3HKDM1AWE6YDF1GEEB'
-    let periodLength = 'year'
+    //STATE
+    let [stocks, setStock] = useState(null)
 
 
-    axios.get(`https://api.tdameritrade.com/v1/marketdata/${stock}/pricehistory`, {
-        params: {
-            apikey: key,
-            periodType: periodLength,
-            period: 1,
-            frequencyType: 'daily',
-            frequency: 1,
-            endDate: 1614758400000,
-            startDate: 1614672000000,
-            needExtendedHoursData: false
-        }
-    })
-        .then((response) => console.log(response))
-        ;
+    useEffect(() => {
+        axios.get(param.priceHistoryURL, {
+            params: param.priceHistoryParams
+        })
+            .then(response => {
+                setStock(response.data.candles);
+            })
+    }, [])
 
+    // const result = stocks.map((map, index) => {
+
+    // })
+
+    let itemsToRender;
+    if (stocks) {
+        itemsToRender = stocks.map((stock, index) => {
+            return (
+                <div key={index}>
+                    {stock.close}
+                </div>
+            )
+        })
+    }
 
 
 
     return (
         <div>
-            hi
+            {itemsToRender}
         </div>
     )
 }
