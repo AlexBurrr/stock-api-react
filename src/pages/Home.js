@@ -22,9 +22,6 @@ const Home = () => {
             })
     }, [])
 
-    // const result = stocks.map((map, index) => {
-
-    // })
 
     let itemsToRender;
     if (stocks) {
@@ -41,7 +38,7 @@ const Home = () => {
 
     return (
         <div>
-            {itemsToRender}
+            {/* {itemsToRender} */}
         </div>
     )
 }
