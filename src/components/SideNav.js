@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 import { AiOutlineHome } from 'react-icons/ai'
 import { GiNewspaper } from 'react-icons/gi'
 import { IoStatsChart } from 'react-icons/io5'
 import { HiOutlineDocumentReport } from 'react-icons/hi'
 import { MdAttachMoney } from 'react-icons/md'
+import { Switch, Route } from 'react-router-dom'
 
 let SideNavContainer = styled.div`
 display: flex;
@@ -83,14 +85,30 @@ const SideNav = () => {
             <SideNavContainer>
                 <TopSection>GLP</TopSection>
                 <Ul>
+
+
                     <Icon><AiOutlineHome /></Icon>
-                    <PageLi>Dashboard</PageLi>
+                    <NavLink to='/' exact activeClassName='active'>
+                        <PageLi>Dashboard</PageLi>
+                    </NavLink>
+
+
+
                     <Icon><GiNewspaper /></Icon>
-                    <PageLi>News</PageLi>
+                    <NavLink to='/News' exact activeClassName='active'>
+                        <PageLi>News</PageLi>
+                    </NavLink>
+
+
+
                     <Icon><IoStatsChart /></Icon>
                     <PageLi>Stats</PageLi>
+
+
                     <Icon><HiOutlineDocumentReport /></Icon>
                     <PageLi>SEC Filings</PageLi>
+
+
                     <Icon><MdAttachMoney /></Icon>
                     <PageLi>Analyst Rec</PageLi>
 

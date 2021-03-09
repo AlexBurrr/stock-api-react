@@ -43,7 +43,7 @@ let NavUl = styled.ul`
     
     font-size:3rem;
     list-style:inherit;
-    padding-left:15%;
+    padding-left:19%;
     
     
 
